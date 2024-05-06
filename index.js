@@ -1,17 +1,23 @@
 import axios from 'axios';
 import express from 'express';
 
-const app = express();
-
+const app = express()
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true,
 }))
 
+app.get('/', (req, res) => {
+    res.send('hello')
+})
+
+app.get('/msg', (req, res) => {
+    res.send('this is msg page')
+})
+
 app.post('/msg', (req, res) => {
 
     const { message } = req.body;
-    console.log(message)
 
     if (!message ||  message.text.toLowerCase().indexOf("marco") < 0) {
         res.end;
@@ -21,9 +27,9 @@ app.post('/msg', (req, res) => {
 
     axios
 		.post(
-			"https://api.telegram./6924736233:AAHTSnmPPW8H2dU3f5cqFI-yiqXtKZhzRc8/sendMessage",
+			"https://api.telegram./bot6924736233:AAHTSnmPPW8H2dU3f5cqFI-yiqXtKZhzRc8/sendMessage",
 			{
-				chat_id: message.chat.id,
+				chat_id: message.chat.id ,
 				text: "Polo!!",
 			}
 		)
