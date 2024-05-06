@@ -18,6 +18,7 @@ app.get('/msg', (req, res) => {
 app.post('/msg', (req, res) => {
 
     const { message } = req.body;
+    console.log(message)
 
     if (!message ||  message.text.toLowerCase().indexOf("marco") < 0) {
         res.end;
@@ -25,8 +26,7 @@ app.post('/msg', (req, res) => {
     }
 
 
-    axios
-		.post(
+    axios.post(
 			"https://api.telegram./bot6924736233:AAHTSnmPPW8H2dU3f5cqFI-yiqXtKZhzRc8/sendMessage",
 			{
 				chat_id: message.chat.id ,
